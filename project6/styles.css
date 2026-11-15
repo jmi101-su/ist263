@@ -95,13 +95,10 @@ main section h2 {
     border-radius: 6px;
 }
 
-/* 卡片图片：按 wireframe 做成矮矮的一条，object-fit: cover 裁剪，图片不会变形 */
+/* 卡片图片：宽度占满卡片，高度自动按比例 */
 .card img {
     display: block;
     width: 100%;
-    height: 180px;
-    object-fit: cover;
-    object-position: top;
     border-bottom: 2px solid #111111;
 }
 
