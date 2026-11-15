@@ -1,18 +1,13 @@
 /* =========================================================
    Better Call Jie Mi - Project Milestone 6 (First Draft)
    配色：黄色 + 黑色 + 红色
+   只用之前 lab 里用过的 CSS 属性
    ========================================================= */
 
 /* ---------- 基础样式 ---------- */
-/* border-box：width 包含 padding 和 border，不会因为 padding 撑出横向滚动条 */
-* {
-    box-sizing: border-box;
-}
-
 body {
     margin: 0;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-    line-height: 1.5;
     color: #111111;
     background-color: #fff8e1;
 }
@@ -27,8 +22,7 @@ img {
 /* 按 wireframe：标题在左，导航在右，外面一个框 */
 header {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    box-sizing: border-box;
     width: 90%;
     margin: 20px auto;
     padding: 10px 20px;
@@ -42,10 +36,15 @@ header h1 {
     color: #ffd60a;
 }
 
+/* margin-left: auto 把导航推到最右边 */
+nav {
+    margin-left: auto;
+    padding: 10px 0;
+}
+
 nav a {
     margin-left: 15px;
     color: #ffd60a;
-    font-weight: bold;
     text-decoration: none;
 }
 
@@ -54,42 +53,49 @@ nav a:hover {
 }
 
 /* ---------- 大标题区 ---------- */
-.hero {
-    text-align: center;
-    padding: 10px 5%;
+/* width: fit-content + margin: auto 让标题、文字、海报居中 */
+.hero h2 {
+    width: fit-content;
+    margin: 20px auto 10px;
+    font-size: 2.2em;
 }
 
-.hero h2 {
-    font-size: 2.2em;
-    margin-bottom: 10px;
+.hero p {
+    width: fit-content;
+    margin: 10px auto;
 }
 
 .hero figure {
+    width: fit-content;
     margin: 20px auto;
 }
 
 /* ---------- 通用 section ---------- */
 main section {
     width: 90%;
-    margin: 0 auto;
+    margin: auto;
     padding: 20px 0;
 }
 
 main section h2 {
-    text-align: center;
+    width: fit-content;
+    margin: 20px auto;
 }
 
 /* ---------- 服务卡片：用 Flexbox 排成网格 ---------- */
-/* flex-wrap: wrap 让卡片自动换行；电脑上一行 3 张 */
+/* flex-wrap: wrap 让卡片自动换行；max-width 限制宽度，电脑上一行 3 张 */
 .card-grid {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    gap: 30px;
+    max-width: 1100px;
+    margin: auto;
 }
 
+/* flex: 1 1 300px：每张卡片最小 300px，空间够就变宽 */
 .card {
-    width: 30%;
-    margin-bottom: 30px;
+    flex: 1 1 300px;
+    box-sizing: border-box;
     background-color: #ffffff;
     border: 2px solid #111111;
     border-radius: 6px;
@@ -99,7 +105,7 @@ main section h2 {
 .card img {
     display: block;
     width: 100%;
-    border-bottom: 2px solid #111111;
+    border-radius: 4px;
 }
 
 .card h3 {
@@ -115,61 +121,53 @@ main section h2 {
     display: block;
     margin: 0 15px 15px;
     color: #111111;
-    font-weight: bold;
 }
 
-/* ---------- About 区 ---------- */
+/* ---------- About 区：黑底白字，跟上下区分开 ---------- */
 #about {
-    border-top: 3px solid #111111;
+    width: 100%;
+    padding: 20px 5%;
+    box-sizing: border-box;
+    background-color: #111111;
+    color: #ffffff;
+}
+
+#about h2 {
+    color: #ffd60a;
 }
 
 /* ---------- Lore 区 ---------- */
-#lore {
-    border-top: 3px solid #111111;
-}
-
 #lore h3 {
     color: #b00020;
 }
 
-.lore-ending {
-    text-align: center;
-}
-
 /* ---------- Footer ---------- */
 footer {
-    width: 90%;
-    margin: 0 auto;
-    padding: 15px 0;
-    border-top: 1px solid #999999;
+    padding: 15px 5%;
+    background-color: #111111;
+    color: #ffd60a;
     font-size: 0.9em;
 }
 
 /* =========================================================
-   Media Queries：适配平板和手机
+   Media Queries：适配手机
+   （平板上卡片会因为 flex: 1 1 300px 自动变成一行 2 张）
    ========================================================= */
-
-/* 平板（900px 以下）：卡片一行 2 张 */
-@media (max-width: 900px) {
-    .card {
-        width: 47%;
-    }
-}
 
 /* 手机（600px 以下） */
 @media (max-width: 600px) {
-    /* header 改成竖着排：标题在上，导航在下 */
+    /* header 改成 display: block：标题在上，导航在下 */
     header {
-        flex-direction: column;
-        text-align: center;
+        display: block;
     }
 
     header h1 {
+        width: fit-content;
+        margin: auto;
         font-size: 1.6em;
-        margin-bottom: 10px;
     }
 
-    /* 3 个导航链接一行放不下 → 竖着排 */
+    /* 3 个导航链接一行放不下 → 每个链接 display: block 竖着排 */
     nav a {
         display: block;
         margin: 5px 0;
@@ -183,6 +181,6 @@ footer {
 
     /* 卡片一行 1 张 */
     .card {
-        width: 100%;
+        flex: 1 1 100%;
     }
 }
