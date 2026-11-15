@@ -1,0 +1,186 @@
+/* =========================================================
+   Better Call Jie Mi - Project Milestone 6 (First Draft)
+   配色：黄色 + 黑色 + 红色
+   ========================================================= */
+
+/* ---------- 基础样式 ---------- */
+body {
+    margin: 0;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    line-height: 1.5;
+    color: #111111;
+    background-color: #fff8e1;
+}
+
+/* 图片不会超出容器宽度，手机上也不会撑破页面 */
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* ---------- Header + 导航 ---------- */
+/* 按 wireframe：标题在左，导航在右，外面一个框 */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    margin: 20px auto;
+    padding: 10px 20px;
+    background-color: #111111;
+    border: 3px solid #111111;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2em;
+    color: #ffd60a;
+}
+
+nav a {
+    margin-left: 15px;
+    color: #ffd60a;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+/* ---------- 大标题区 ---------- */
+.hero {
+    text-align: center;
+    padding: 10px 5%;
+}
+
+.hero h2 {
+    font-size: 2.2em;
+    margin-bottom: 10px;
+}
+
+.hero figure {
+    margin: 20px auto;
+}
+
+/* ---------- 通用 section ---------- */
+main section {
+    width: 90%;
+    margin: 0 auto;
+    padding: 20px 0;
+}
+
+main section h2 {
+    text-align: center;
+}
+
+/* ---------- 服务卡片：用 Flexbox 排成网格 ---------- */
+/* flex-wrap: wrap 让卡片自动换行；电脑上一行 3 张 */
+.card-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.card {
+    width: 30%;
+    margin-bottom: 30px;
+    background-color: #ffffff;
+    border: 2px solid #111111;
+    border-radius: 6px;
+}
+
+/* 卡片图片：按 wireframe 做成矮矮的一条，object-fit: cover 裁剪，图片不会变形 */
+.card img {
+    display: block;
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    object-position: top;
+    border-bottom: 2px solid #111111;
+}
+
+.card h3 {
+    margin: 10px 15px 5px;
+    color: #b00020;
+}
+
+.card p {
+    margin: 0 15px 10px;
+}
+
+.card a {
+    display: block;
+    margin: 0 15px 15px;
+    color: #111111;
+    font-weight: bold;
+}
+
+/* ---------- About 区 ---------- */
+#about {
+    border-top: 3px solid #111111;
+}
+
+/* ---------- Lore 区 ---------- */
+#lore {
+    border-top: 3px solid #111111;
+}
+
+#lore h3 {
+    color: #b00020;
+}
+
+.lore-ending {
+    text-align: center;
+}
+
+/* ---------- Footer ---------- */
+footer {
+    width: 90%;
+    margin: 0 auto;
+    padding: 15px 0;
+    border-top: 1px solid #999999;
+    font-size: 0.9em;
+}
+
+/* =========================================================
+   Media Queries：适配平板和手机
+   ========================================================= */
+
+/* 平板（900px 以下）：卡片一行 2 张 */
+@media (max-width: 900px) {
+    .card {
+        width: 47%;
+    }
+}
+
+/* 手机（600px 以下） */
+@media (max-width: 600px) {
+    /* header 改成竖着排：标题在上，导航在下 */
+    header {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    header h1 {
+        font-size: 1.6em;
+        margin-bottom: 10px;
+    }
+
+    /* 3 个导航链接一行放不下 → 竖着排 */
+    nav a {
+        display: block;
+        margin: 5px 0;
+        padding: 8px;
+        border: 1px solid #ffd60a;
+    }
+
+    .hero h2 {
+        font-size: 1.6em;
+    }
+
+    /* 卡片一行 1 张 */
+    .card {
+        width: 100%;
+    }
+}
