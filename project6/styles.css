@@ -4,6 +4,11 @@
    ========================================================= */
 
 /* ---------- 基础样式 ---------- */
+/* border-box：width 包含 padding 和 border，不会因为 padding 撑出横向滚动条 */
+* {
+    box-sizing: border-box;
+}
+
 body {
     margin: 0;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
